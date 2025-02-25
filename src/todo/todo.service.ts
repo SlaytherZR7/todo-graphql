@@ -12,6 +12,18 @@ export class TodoService {
     { id: 3, description: 'Piedra del poder', done: false },
   ];
 
+  get totalTodos(): number {
+    return this.todos.length;
+  }
+
+  get completedTodos(): number {
+    return this.todos.filter((todo) => todo.done).length;
+  }
+
+  get pendingTodos(): number {
+    return this.todos.filter((todo) => !todo.done).length;
+  }
+
   findAll(statusArgs: StatusArgs): Todo[] {
     const { status } = statusArgs;
     if (status !== undefined)
